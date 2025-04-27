@@ -105,10 +105,10 @@ def create_book(request, payload: BookSchemaIn):
     publisher_ids = data.pop("publisher_ids", [])
     genre_ids = data.pop("genre_ids", [])
 
-    # Ahora data tiene solo los campos correctos
+    # data tiene los campos correctos
     book_obj = Book.objects.create(**data)
 
-    # Luego seteas las relaciones ManyToMany
+    # las relaciones ManyToMany
     if publisher_ids:
         book_obj.publishers.set(publisher_ids)
     if genre_ids:
